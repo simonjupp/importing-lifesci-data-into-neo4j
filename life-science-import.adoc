@@ -2,9 +2,7 @@
  
 == Use Case: Drug the Genome
  
-Many drugs that are used to treat one disease may offer benefits in the treatment of other diseases. 
- 
-This kind of drug repurposing can be done by looking at known protein targets for approved drugs and looking into the underlying biological mechanism for other disease associations. ( http://stm.sciencemag.org/content/9/383/eaag1166.full[An organized way to drug the genome]). 
+Many drugs that are used to treat one disease may offer benefits in the treatment of other diseases. This kind of drug repurposing can be done by looking at known protein targets for approved drugs and looking into the underlying biological mechanism for other disease associations. ( http://stm.sciencemag.org/content/9/383/eaag1166.full[An organized way to drug the genome]). 
  
 There’s a lot of openly available data about gene-disease and drug-target associations, but it is distributed in a variety of databases with different access modes. By integrating data from multiple sources we can begin to ask questions of the data that might reveal connections that could lead to the design of new targeted therapeutics.  
  
