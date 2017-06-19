@@ -422,7 +422,7 @@ RETURN  collect(distinct drug.label),
         gene.label
 ----
  
-== Reducing the search space
+== Querying the ontology to reduce the search space
 
 The previous query looked for all disease associations. We can use the ontology to restrict the query to only search for specific types of releated diseases. For instance, we can look for drugs indicated for epilepsy, such as ‘CARBAMAZEPINE’, and see what other types of 'neurological disorders' have been associated to the same drug target. 
  
@@ -438,8 +438,10 @@ RETURN collect(distinct drug.label), disease.label as indicated_disease, disease
 ----
  
  
-== For drugs indicated in types of cancer, find targets associated to other types of cancer
- 
+== Repurposing cancer drugs
+
+For drugs indicated in one types of cancer, find the targets and associations to other types of cancer. 
+
 [source,cypher]
 ----
 MATCH (disease)-[CHILD_OF*]->(:Disease { id : 'http://www.ebi.ac.uk/efo/EFO_0000311'})
