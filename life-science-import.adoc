@@ -351,10 +351,6 @@ The ChEMBL database provides data on bioactive drug-like small molecules. We can
 ----
 CREATE CONSTRAINT ON (d:Drug) ASSERT d.id IS UNIQUE
 ----
-[source,cypher]
-----
-CREATE CONSTRAINT ON (p:Protein) ASSERT p.id IS UNIQUE
-----
  
 [source,cypher]
 ----
