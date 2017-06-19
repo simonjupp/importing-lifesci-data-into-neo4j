@@ -241,7 +241,7 @@ Get proteins for DAPL1 gene (Entrez id 92196)
  
 [source,cypher]
 ----
-MATCH (g:Gene)-[ENCODES]->(p:Protein) WHERE g.id = '92196' return p.id
+MATCH (g:Gene)-[:ENCODES]->(p:Protein) WHERE g.id = '92196' return p.id
 ----
  
 == Get SNP disease data from GWAS catalog 
@@ -283,7 +283,7 @@ Which disease are associated with variants in the  gene (entrez id '4214')?
  
 [source,cypher]
 ----
-MATCH (d:Disease)<-[ASSOCIATED_WITH]-(s:SNP)-[VARIANT_IN]->(g:Gene) 
+MATCH (d:Disease)<-[:ASSOCIATED_WITH]-(s:SNP)-[:VARIANT_IN]->(g:Gene) 
 WHERE g.id = '4214'
 RETURN d,s, g
 ----
