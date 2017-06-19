@@ -51,7 +51,7 @@ We can query Ensembl for all human genes, their transcripts and protein products
  
 image::https://dl.dropboxusercontent.com/u/14493611/life-sciences-import-model-gene.jpg[]
 
-We can construct a simple SPARQL query to get all the gene, transcript and proteins from the human subgraph in Ensembl as follows. The relationships are defined using a relationships from an ontology that describes sequence features. As all resources in RDF are identified by URI, we can define some namespace prefixes as part of the query to readability. 
+We can construct a simple SPARQL query to get all the gene, transcript and proteins from the human subgraph in Ensembl as follows. The relationships are defined using a relationships from an ontology that describes sequence features. As all resources in RDF are identified by URI, we can define some namespace prefixes as part of the query to readability. Try executing the following query at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
  
  
 .Example Query 1
@@ -74,6 +74,8 @@ This example illustrates one of the key differences between an RDF graph and the
  
 image::https://dl.dropboxusercontent.com/u/14493611/life-sciences-import-model-attribute.jpg[]
 
+Try executing the following query at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
+ 
 .Example Query 2
 ----
 PREFIX sio: <http://semanticscience.org/resource/>
@@ -95,7 +97,7 @@ WHERE {
  
 == Query Ensembl to get Gene/Protein data
  
-We can now combine these queries to get all human genes and their corresponding protein, and get the gene ids in *Entrez format* and the protein id in UniProt format. 
+We can now combine these queries to get all human genes and their corresponding protein, and get the gene ids in *Entrez format* and the protein id in UniProt format. Try executing the following query at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
  
 .Example Query 3
 ----
