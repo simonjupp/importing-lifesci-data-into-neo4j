@@ -13,4 +13,4 @@ You can workthough the tutorial yourself by executing the Neo4j guide. The simpl
 You can also run this guide in your own Neo4j database, please make sure you have installed the latest set of APOC stored procedures (https://github.com/neo4j-contrib/neo4j-apoc-procedures) before you start. 
 
 
-
+The source for the guide is available [here](life-science-import.adoc). 
