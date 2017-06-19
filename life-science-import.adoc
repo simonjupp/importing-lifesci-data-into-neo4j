@@ -387,45 +387,53 @@ MERGE (m)-[:TARGETS]->(p)
 ----
  
  
-== Which drugs are indicated in a disease and also target genes with SNPs indicated in the same disease
- 
+== Querying across datasets
+
+We can now look for genes that have an association to a disease from GWAS and have proteins that are targets for drugs indicated in the same disease. 
  
 [source,cypher]
 ----
 MATCH (disease:Disease)<-[:ASSOCIATED_WITH]-(s:SNP)-[:VARIANT_IN]->(gene:Gene)
- 
+
 MATCH (disease)<-[:ASSOCIATED_WITH]-(drug:Drug)
- 
+
 MATCH (drug)-[:TARGETS]->(:Protein)<-[:ENCODES]-(gene)
- 
-RETURN disease.label, gene.label,  collect(distinct drug.label)
+
+RETURN gene.label, disease.label, collect(distinct drug.label)
 ----
  
- 
-== Find candidate for Drug repurposing that have a known indication to one disease and  target proteins with links to other disease 
+== Drug repurposing example 
+
+Drugs that are used for one disease by tareggting a specific gene, may be suitables for treating other diseases that are assoicated to the same gene. We can query our graph to find approved drus that have a known indication to one disease and  target proteins with links to other disease.  
  
 [source,cypher]
 ----
 MATCH (disease:Disease)<-[:ASSOCIATED_WITH]-(s:SNP)-[:VARIANT_IN]->(gene:Gene)
+
 MATCH (drug)-[:TARGETS]->(:Protein)<-[:ENCODES]-(gene)
+
 MATCH (disease_indicated)<-[:ASSOCIATED_WITH]-(drug:Drug)
+
 WHERE disease <> disease_indicated
- 
+
 RETURN  collect(distinct drug.label), 
         disease_indicated.label as known_indication, 
-        disease.label as other_disease_association, gene.label
+        disease.label as other_disease_association, 
+        gene.label
 ----
  
-== Find drugs indicated for epilepsy, such as ‘CARBAMAZEPINE’, and see if there are other types of neurological disorders that have been associated to the same drug target
+== Reducing the search space
+
+The previous query looked for all disease associations. We can use the ontology to restrict the query to only search for specific types of releated diseases. For instance, we can look for drugs indicated for epilepsy, such as ‘CARBAMAZEPINE’, and see what other types of 'neurological disorders' have been associated to the same drug target. 
  
 [source,cypher]
 ----
-MATCH (disease:Disease { id : 'http://www.ebi.ac.uk/efo/EFO_0000474'})
- 
+MATCH (disease:Disease { id : 'http://www.ebi.ac.uk/efo/EFO_0000474'}) 
+
 MATCH (disease)<-[:ASSOCIATED_WITH]-(s:SNP)-[:VARIANT_IN]->(gene:Gene)-[:ENCODES]->(:Protein)<-[:TARGETS]-(drug:Drug)
- 
-MATCH (drug)-[:ASSOCIATED_WITH]->(disease2:Disease)-[:CHILD_OF*]->(Disease { id : 'http://www.ebi.ac.uk/efo/EFO_0000618'})
- 
+
+MATCH (drug)-[:ASSOCIATED_WITH]->(disease2:Disease)-[:CHILD_OF*]->(Disease { id : 'http://www.ebi.ac.uk/efo/EFO_0000618'}) 
+
 RETURN collect(distinct drug.label), disease.label as indicated_disease, disease2.label as associated_from_gwas, gene.label
 ----
  
