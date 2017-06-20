@@ -386,6 +386,16 @@ MERGE (m)-[:ASSOCIATED_WITH]->(d)
 MERGE (m)-[:TARGETS]->(p)
 ----
  
+== Review the model
+
+At this point we have all the data loaded and we can review our model 
+
+[source,cypher]
+----
+call db.schema();
+----
+
+image::https://dl.dropboxusercontent.com/u/14493611/life-science-import-datamodel.jpg[]
  
 == Querying across datasets
 
@@ -404,7 +414,7 @@ RETURN gene.label, disease.label, collect(distinct drug.label)
  
 == Drug repurposing example 
 
-Drugs that are used for one disease by tareggting a specific gene, may be suitables for treating other diseases that are assoicated to the same gene. We can query our graph to find approved drus that have a known indication to one disease and  target proteins with links to other disease.  
+Drugs that are used for one disease may be suitable for treating other diseases that are assoicated to the same gene. We can query our graph to find approved drugs that have a known indication to one disease and target proteins associated to other diseases.  
  
 [source,cypher]
 ----
@@ -452,6 +462,7 @@ MATCH (drug)-[:ASSOCIATED_WITH]->(disease2:Disease)-[:CHILD_OF*]->(:Disease { id
  
 RETURN collect(distinct drug.label), disease.label as indicated_disease, disease2.label as associated_from_gwas, gene.label order by gene.label
 ----
+
 == Load JSON
  
 We're using the same database but just JSON as another output format.
