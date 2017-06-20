@@ -135,6 +135,8 @@ FROM <http://rdf.ebi.ac.uk/dataset/cco>
  
 == Create indexes for Genes and Proteins
  
+Before we load the data we can define some indexes on Gene id and Protein id. This will speed up loading and querying on the id property. By using a UNIQUE constraint we ensure we don't load any duplicate genes or proteins as we import the data. 
+
 [source,cypher]
 ----
 CREATE CONSTRAINT ON (g:Gene) ASSERT g.id IS UNIQUE
@@ -248,7 +250,7 @@ MATCH (g:Gene)-[:ENCODES]->(p:Protein) WHERE g.id = '92196' return p.id
  
 SNPs represent variants in the genome that can be associated to disease through GWAS studies. We will load SNP to disease associations from the EMBL-EBI/NHGRI GWAS catalog (http://www.ebi.ac.uk/gwas). The SNPs have been mapped to a gene, or nearest gene in the GWAS data export. The GWAS data is already available for direct download in a tab-delimited format, so we can load this directly into Neo4j using the LOAD CSV command. 
  
-First, we will create indexes for SNPs and DISEASE terms
+First, we will create indexes for SNPs and Disease terms
  
 [source,cypher]
 ----
@@ -348,6 +350,8 @@ The ChEMBL database provides data on bioactive drug-like small molecules. We can
  
  
 [source,cypher]
+
+Again we need a new index for Drugs. 
 ----
 CREATE CONSTRAINT ON (d:Drug) ASSERT d.id IS UNIQUE
 ----
