@@ -147,7 +147,7 @@ CREATE CONSTRAINT ON (p:Protein) ASSERT p.id IS UNIQUE
  
 == From SPARQL query results into Neo4j
  
-SPARQL supports a range of formats for the query results including XML, JSON and CSV. We can use the Neo4j load from CSV command to send a query to a SPARQL endpoint and imports the results. 
+SPARQL supports a range of formats for the query results including XML, JSON and CSV. We can use the Neo4j load from CSV command to send a query to a SPARQL endpoint and import the results. 
  
 [source,cypher]
 ----
