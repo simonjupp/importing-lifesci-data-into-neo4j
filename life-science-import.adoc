@@ -290,9 +290,9 @@ RETURN d,s, g
  
 == Loading a disease ontology for richer queries 
  
-Ontologies are a type of controlled vocabulary that are used to standardise the way we describe data. In this case will use an ontology of diseases to integrate diseases data from multiple sources. The ontology is organised as a directed-acyclic graph, that gives us a way to query for groups of diseases by type, such as “all cancers”. Ontologies are typically published in the W3C Web Ontology Language (OWL), which is a dedicated RDF vocabulary for describing ontologies. We can load the Experimental Factor Ontology (EFO_ using SPARQL queries from the Ontology Lookup Service SPARQL endpoint. 
+Ontologies are a type of controlled vocabulary that are used to standardise the way we describe data. In this case will use an ontology of diseases to integrate diseases data from multiple sources. The ontology is organised as a directed-acyclic graph, that gives us a way to query for groups of diseases by type, such as “all cancers”. Ontologies are typically published in the W3C Web Ontology Language (OWL), which is a dedicated RDF vocabulary for describing ontologies. We can load the Experimental Factor Ontology (EFO) using SPARQL queries from the Ontology Lookup Service SPARQL endpoint. 
  
-This query gets all terms in the EFO along with parent-child relationships specified using the rdfs:subClassOf relationship. As this is RDF, and the terms are identified with URIs, we also want to get the labels for each terms. 
+This query gets all terms in  EFO along with parent-child relationships specified using the rdfs:subClassOf relationship. As this is RDF, and the terms are identified with URIs, we also want to get the labels for each terms. 
  
 [source,cypher]
 ----
