@@ -49,7 +49,7 @@ We can query Ensembl for all human genes, their transcripts and protein products
  
 image::https://dl.dropboxusercontent.com/u/14493611/life-sciences-import-model-gene.jpg[]
 
-We can construct a simple SPARQL query to get all the gene, transcript and proteins from the human subgraph in Ensembl as follows. The relationships are defined using a relationships from an ontology that describes sequence features. As all resources in RDF are identified by URI, we can define some namespace prefixes as part of the query to readability. Try executing the following query at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
+We can construct a simple SPARQL query to get all the gene, transcript and proteins from the human subgraph in Ensembl as follows. The relationships are defined using a relationships from an ontology that describes sequence features. As all resources in RDF are identified by URI, we can define some namespace prefixes as part of the query to ease readability. Try executing the following query by copying into the query box at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
  
  
 .Example Query 1
