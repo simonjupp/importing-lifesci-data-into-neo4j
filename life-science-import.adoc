@@ -348,10 +348,9 @@ RETURN g.id, g.label, cancers.label
  
 The ChEMBL database provides data on bioactive drug-like small molecules. We can query ChEMBL find curated mechanisms of actions for these molecules that includes data on biological targets, such as proteins. ChEMBL also includes disease indication data for these small molecules that is extracted from a variety of sources including clinical trials. The ChEMBL RDF schema is very rich, but we can simplify this to simpler graph of drugs with links to protein targets and drugs indicated in disease.  ChEMBL already provides UniProt identifiers for proteins and EFO identifiers for disease, so the data can be easily integrated into our existing Neo4j graph. 
  
+Again we need a new index for Drugs. 
  
 [source,cypher]
-
-Again we need a new index for Drugs. 
 ----
 CREATE CONSTRAINT ON (d:Drug) ASSERT d.id IS UNIQUE
 ----
