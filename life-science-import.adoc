@@ -43,13 +43,13 @@ image::https://dl.dropboxusercontent.com/u/14493611/life-science-import-datamode
  
 == Query for gene and proteins with the Ensembl SPARQL endpoint
  
-Ensembl is multi-species database of genomic features available at http://ensembl.org. Ensembl provides a number of access modes to the data including a SPARQL endpoint that allows you to query an RDF graph of the data at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
+Ensembl is multi-species database of genomic features available at http://ensembl.org. Ensembl provides a number of access modes to the data including a SPARQL endpoint that allows you to query an RDF graph of the data at http://www.ebi.ac.uk/rdf/services/sparql. 
  
 We can query Ensembl for all human genes, their transcripts and protein products. The graph depicted below shows how genes are linked to proteins through transcripts in the Ensembl RDF graph. 
  
 image::https://dl.dropboxusercontent.com/u/14493611/life-sciences-import-model-gene.jpg[]
 
-We can construct a simple SPARQL query to get all the gene, transcript and proteins from the human subgraph in Ensembl as follows. The relationships are defined using a relationships from an ontology that describes sequence features. As all resources in RDF are identified by URI, we can define some namespace prefixes as part of the query to ease readability. Try executing the following query by copying into the query box at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
+We can construct a simple SPARQL query to get all the gene, transcript and proteins from the human subgraph in Ensembl as follows. The relationships are defined using a relationships from an ontology that describes sequence features. As all resources in RDF are identified by URI, we can define some namespace prefixes as part of the query to ease readability. Try executing the following query by copying into the query box at http://www.ebi.ac.uk/rdf/services/sparql. 
  
  
 .Example Query 1
@@ -72,7 +72,7 @@ This example illustrates one of the key differences between an RDF graph and the
  
 image::https://dl.dropboxusercontent.com/u/14493611/life-sciences-import-model-attribute.jpg[]
 
-Try executing the following query at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
+Try executing the following query at http://www.ebi.ac.uk/rdf/services/sparql. 
  
 .Example Query 2
 ----
@@ -95,7 +95,7 @@ WHERE {
  
 == Query Ensembl to get Gene/Protein data
  
-We can now combine these queries to get all human genes and their corresponding protein, and get the gene ids in *Entrez format* and the protein id in UniProt format. Try executing the following query at http://wwwdev.ebi.ac.uk/rdf/services/sparql. 
+We can now combine these queries to get all human genes and their corresponding protein, and get the gene ids in *Entrez format* and the protein id in UniProt format. Try executing the following query at http://www.ebi.ac.uk/rdf/services/sparql. 
  
 .Example Query 3
 ----
@@ -162,7 +162,7 @@ WHERE {
 ?transcript obo:SO_transcribed_from ?gene .
 ?transcript obo:SO_translates_to ?protein .
 }" as query
-LOAD CSV WITH HEADERS FROM "http://wwwdev.ebi.ac.uk/rdf/services/servlet/query?query="
+LOAD CSV WITH HEADERS FROM "http://www.ebi.ac.uk/rdf/services/servlet/query?query="
 +apoc.text.urlencode(query)+"&format=CSV&limit=25&offset=0" AS line 
 WITH line
 RETURN line.gene, line.transcript, line.protein
@@ -173,7 +173,7 @@ Now we have access to the data from the SPARQL endpoint, we can import the full 
 [source,cypher]
 ----
 USING PERIODIC COMMIT 10000
-LOAD CSV WITH HEADERS FROM 'http://wwwdev.ebi.ac.uk/rdf/services/servlet/query?query='
+LOAD CSV WITH HEADERS FROM 'http://www.ebi.ac.uk/rdf/services/servlet/query?query='
 +apoc.text.urlencode('
  
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -299,7 +299,7 @@ This query gets all terms in  EFO along with parent-child relationships specifie
 [source,cypher]
 ----
 USING PERIODIC COMMIT 10000
-LOAD CSV WITH HEADERS FROM "http://wwwdev.ebi.ac.uk/rdf/services/servlet/query?query="+apoc.text.urlencode(
+LOAD CSV WITH HEADERS FROM "http://www.ebi.ac.uk/rdf/services/servlet/query?query="+apoc.text.urlencode(
 '
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
  
@@ -358,7 +358,7 @@ CREATE CONSTRAINT ON (d:Drug) ASSERT d.id IS UNIQUE
 [source,cypher]
 ----
 USING PERIODIC COMMIT 10000
-LOAD CSV WITH HEADERS FROM "http://wwwdev.ebi.ac.uk/rdf/services/servlet/query?query="+apoc.text.urlencode(
+LOAD CSV WITH HEADERS FROM "http://www.ebi.ac.uk/rdf/services/servlet/query?query="+apoc.text.urlencode(
 '
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
@@ -483,7 +483,7 @@ WHERE {
 ?transcript obo:SO_transcribed_from ?gene .
 ?transcript obo:SO_translates_to ?protein .
 }" as query
-WITH "http://wwwdev.ebi.ac.uk/rdf/services/servlet/query?query="
+WITH "http://www.ebi.ac.uk/rdf/services/servlet/query?query="
 +apoc.text.urlencode(query)+"&format=JSON&limit=10&offset=0" as url
  
 CALL apoc.load.json(url) yield value
@@ -500,7 +500,7 @@ WHERE {
 ?transcript obo:SO_transcribed_from ?gene .
 ?transcript obo:SO_translates_to ?protein .
 }" as query
-WITH "http://wwwdev.ebi.ac.uk/rdf/services/servlet/query?query="
+WITH "http://www.ebi.ac.uk/rdf/services/servlet/query?query="
 +apoc.text.urlencode(query)+"&format=JSON&limit=10&offset=0" as url
  
 CALL apoc.load.json(url) yield value
@@ -527,7 +527,7 @@ WHERE {
 ?transcript obo:SO_translates_to ?protein .
 }" as query
  
-WITH "http://wwwdev.ebi.ac.uk/rdf/services/servlet/query?query="
+WITH "http://www.ebi.ac.uk/rdf/services/servlet/query?query="
 +apoc.text.urlencode(query)+"&format=XML&limit=10&offset=0" as url
  
 CALL apoc.load.xmlSimple(url) yield value
