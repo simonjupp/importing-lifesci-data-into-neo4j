@@ -47,7 +47,7 @@ Ensembl is multi-species database of genomic features available at http://ensemb
  
 We can query Ensembl for all human genes, their transcripts and protein products. The graph depicted below shows how genes are linked to proteins through transcripts in the Ensembl RDF graph. 
  
-image::https://dl.dropboxusercontent.com/u/14493611/life-sciences-import-model-gene.jpg[]
+image::https://raw.githubusercontent.com/simonjupp/importing-lifesci-data-into-neo4j/master/life-sciences-import-model-gene.jpg[]
 
 We can construct a simple SPARQL query to get all the gene, transcript and proteins from the human subgraph in Ensembl as follows. The relationships are defined using a relationships from an ontology that describes sequence features. As all resources in RDF are identified by URI, we can define some namespace prefixes as part of the query to ease readability. Try executing the following query by copying into the query box at http://www.ebi.ac.uk/rdf/services/sparql. 
  
@@ -398,7 +398,7 @@ At this point we have all the data loaded and we can review our model
 call db.schema();
 ----
 
-image::https://dl.dropboxusercontent.com/u/14493611/life-science-import-datamodel.jpg[]
+image::https://raw.githubusercontent.com/simonjupp/importing-lifesci-data-into-neo4j/master/life-science-import-datamodel.jpg[]
  
 == Querying across datasets
 
