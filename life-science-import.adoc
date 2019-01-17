@@ -19,7 +19,7 @@ Proteins are linked through to the genes that encode them and variants (SNPs) ar
  
 The Experimental Factor Ontology (EFO) is used to provide a classification of disease.  
  
-image::https://dl.dropboxusercontent.com/u/14493611/life-science-import-datamodel.jpg[]
+image::https://raw.githubusercontent.com/simonjupp/importing-lifesci-data-into-neo4j/master/life-science-import-datamodel.jpg[]
 
  
 == Data Sources
