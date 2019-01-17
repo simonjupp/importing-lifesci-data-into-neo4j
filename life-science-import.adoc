@@ -70,7 +70,7 @@ The previous query returned URIs for each resource in the graph. There are multi
  
 This example illustrates one of the key differences between an RDF graph and the Neo4j property graph. In RDF, everything is a triple including relationships to values. 
  
-image::https://dl.dropboxusercontent.com/u/14493611/life-sciences-import-model-attribute.jpg[]
+image::https://raw.githubusercontent.com/simonjupp/importing-lifesci-data-into-neo4j/master/life-sciences-import-model-attribute.jpg[]
 
 Try executing the following query at http://www.ebi.ac.uk/rdf/services/sparql. 
  
