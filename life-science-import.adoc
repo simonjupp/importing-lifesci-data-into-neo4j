@@ -162,7 +162,7 @@ WHERE {
 ?transcript obo:SO_transcribed_from ?gene .
 ?transcript obo:SO_translates_to ?protein .
 }" as query
-LOAD CSV WITH HEADERS FROM "http://www.ebi.ac.uk/rdf/services/servlet/query?query="
+LOAD CSV WITH HEADERS FROM "https://www.ebi.ac.uk/rdf/services/servlet/query?query="
 +apoc.text.urlencode(query)+"&format=CSV&limit=25&offset=0" AS line 
 WITH line
 RETURN line.gene, line.transcript, line.protein
@@ -173,7 +173,7 @@ Now we have access to the data from the SPARQL endpoint, we can import the full 
 [source,cypher]
 ----
 USING PERIODIC COMMIT 10000
-LOAD CSV WITH HEADERS FROM 'http://www.ebi.ac.uk/rdf/services/servlet/query?query='
+LOAD CSV WITH HEADERS FROM 'https://www.ebi.ac.uk/rdf/services/servlet/query?query='
 +apoc.text.urlencode('
  
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -299,7 +299,7 @@ This query gets all terms in  EFO along with parent-child relationships specifie
 [source,cypher]
 ----
 USING PERIODIC COMMIT 10000
-LOAD CSV WITH HEADERS FROM "http://www.ebi.ac.uk/rdf/services/servlet/query?query="+apoc.text.urlencode(
+LOAD CSV WITH HEADERS FROM "https://www.ebi.ac.uk/rdf/services/servlet/query?query="+apoc.text.urlencode(
 '
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
  
@@ -358,7 +358,7 @@ CREATE CONSTRAINT ON (d:Drug) ASSERT d.id IS UNIQUE
 [source,cypher]
 ----
 USING PERIODIC COMMIT 10000
-LOAD CSV WITH HEADERS FROM "http://www.ebi.ac.uk/rdf/services/servlet/query?query="+apoc.text.urlencode(
+LOAD CSV WITH HEADERS FROM "https://www.ebi.ac.uk/rdf/services/servlet/query?query="+apoc.text.urlencode(
 '
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
@@ -483,7 +483,7 @@ WHERE {
 ?transcript obo:SO_transcribed_from ?gene .
 ?transcript obo:SO_translates_to ?protein .
 }" as query
-WITH "http://www.ebi.ac.uk/rdf/services/servlet/query?query="
+WITH "https://www.ebi.ac.uk/rdf/services/servlet/query?query="
 +apoc.text.urlencode(query)+"&format=JSON&limit=10&offset=0" as url
  
 CALL apoc.load.json(url) yield value
@@ -500,7 +500,7 @@ WHERE {
 ?transcript obo:SO_transcribed_from ?gene .
 ?transcript obo:SO_translates_to ?protein .
 }" as query
-WITH "http://www.ebi.ac.uk/rdf/services/servlet/query?query="
+WITH "https://www.ebi.ac.uk/rdf/services/servlet/query?query="
 +apoc.text.urlencode(query)+"&format=JSON&limit=10&offset=0" as url
  
 CALL apoc.load.json(url) yield value
@@ -527,7 +527,7 @@ WHERE {
 ?transcript obo:SO_translates_to ?protein .
 }" as query
  
-WITH "http://www.ebi.ac.uk/rdf/services/servlet/query?query="
+WITH "https://www.ebi.ac.uk/rdf/services/servlet/query?query="
 +apoc.text.urlencode(query)+"&format=XML&limit=10&offset=0" as url
  
 CALL apoc.load.xmlSimple(url) yield value
